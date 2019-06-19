@@ -42,8 +42,10 @@ class KomtetKassa {
             Vat::RATE_0,
             Vat::RATE_10,
             Vat::RATE_18,
+            Vat::RATE_20,
             Vat::RATE_110,
             Vat::RATE_118,
+            Vat::RATE_120,
         );
     }
 
