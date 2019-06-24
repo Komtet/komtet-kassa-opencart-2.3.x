@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/komtet-kassa-sdk/autoload.php';
+require_once __DIR__ . '/komtet-kassa-sdk/autoload.php';
 
 use Komtet\KassaSdk\Check;
 use Komtet\KassaSdk\Client;
@@ -10,22 +10,27 @@ use Komtet\KassaSdk\QueueManager;
 use Komtet\KassaSdk\TaxSystem;
 use Komtet\KassaSdk\Vat;
 
-class KomtetKassa {
+class KomtetKassa
+{
     private $registry;
 
-    public function __construct($registry) {
+    public function __construct($registry)
+    {
         $this->registry = $registry;
     }
 
-    public function __get($key) {
+    public function __get($key)
+    {
         return $this->registry->get($key);
     }
 
-    public function __set($key, $value) {
+    public function __set($key, $value)
+    {
         $this->registry->set($key, $value);
     }
 
-    public function getTaxSystems() {
+    public function getTaxSystems()
+    {
         return array(
             TaxSystem::COMMON,
             TaxSystem::SIMPLIFIED_IN,
@@ -36,20 +41,20 @@ class KomtetKassa {
         );
     }
 
-    public function getVatRates() {
+    public function getVatRates()
+    {
         return array(
             Vat::RATE_NO,
             Vat::RATE_0,
             Vat::RATE_10,
-            Vat::RATE_18,
             Vat::RATE_20,
             Vat::RATE_110,
-            Vat::RATE_118,
             Vat::RATE_120,
         );
     }
 
-    public function printCheck($orderID) {
+    public function printCheck($orderID)
+    {
         if (intval($this->config->get('module_komtet_kassa_status')) === 0) {
             return;
         }
@@ -105,7 +110,7 @@ class KomtetKassa {
             new Vat($shippingVatRate)
         ));
 
-        $payment = Payment::createCard($total + $totals['shipping']);
+        $payment = new Payment(Payment::TYPE_CARD, $total + $totals['shipping']);
         $check->addPayment($payment);
 
         $client = new Client(
@@ -124,7 +129,8 @@ class KomtetKassa {
         }
     }
 
-    private function getOrderTotals($orderID) {
+    private function getOrderTotals($orderID)
+    {
         $stmt = "SELECT code, value FROM " . DB_PREFIX . "order_total WHERE order_id = %d ORDER BY sort_order";
         $rows = $this->db->query(sprintf($stmt, $orderID))->rows;
         $result = array(
