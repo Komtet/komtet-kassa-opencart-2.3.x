@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/komtet-kassa-sdk/autoload.php';
+require_once __DIR__ . '/komtet-kassa-php-sdk/autoload.php';
 
 use Komtet\KassaSdk\Check;
 use Komtet\KassaSdk\Client;
@@ -46,10 +46,14 @@ class KomtetKassa
         return array(
             Vat::RATE_NO,
             Vat::RATE_0,
+            Vat::RATE_5,
             Vat::RATE_10,
             Vat::RATE_20,
+            Vat::RATE_22,
+            Vat::RATE_105,
             Vat::RATE_110,
             Vat::RATE_120,
+            Vat::RATE_122,
         );
     }
 
