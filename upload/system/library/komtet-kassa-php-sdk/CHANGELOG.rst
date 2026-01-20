@@ -3,7 +3,7 @@ Changelog
 
 Custom (16.01.2026)
 ------------------
-- Добавлены типы НДС `Vat::RATE_5`, `Vat::RATE_105`, `Vat::RATE_22` и `Vat::RATE_122`
+- Добавлены типы НДС `Vat::RATE_5`, `Vat::RATE_105`, `Vat::RATE_7`, `Vat::RATE_107`, `Vat::RATE_22` и `Vat::RATE_122`
 
 2.2.0 (19.04.2019)
 ------------------
