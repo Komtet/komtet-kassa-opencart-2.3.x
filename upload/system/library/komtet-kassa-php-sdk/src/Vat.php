@@ -27,6 +27,11 @@ class Vat
     const RATE_5 = '5';
 
     /**
+     * 7%
+     */
+    const RATE_7 = '7';
+
+    /**
      * 10%
      */
     const RATE_10 = '10';
@@ -107,10 +112,12 @@ class Vat
                     static::RATE_NO,
                     static::RATE_0,
                     static::RATE_5,
+                    static::RATE_7,
                     static::RATE_10,
                     static::RATE_20,
                     static::RATE_22,
                     static::RATE_105,
+                    static::RATE_107,
                     static::RATE_110,
                     static::RATE_120,
                     static::RATE_122,
